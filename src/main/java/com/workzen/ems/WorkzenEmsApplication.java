@@ -1,4 +1,4 @@
-package com.workzen.workzen_ems;
+package com.workzen.ems;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
