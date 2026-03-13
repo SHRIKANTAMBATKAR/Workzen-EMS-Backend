@@ -1,5 +1,8 @@
 package com.workzen.ems.repository;
 
-public class StudentRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.workzen.ems.entity.Student;
+
+public interface StudentRepository {
 
 }

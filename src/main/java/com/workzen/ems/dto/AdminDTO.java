@@ -6,14 +6,16 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginResponse {
+public class AdminDTO {
 
-    private String token;
-
-    private String role;
+    private Long id;
 
     private String name;
 
     private String email;
+
+    private String mobile;
+
+    private Boolean active;
 
 }

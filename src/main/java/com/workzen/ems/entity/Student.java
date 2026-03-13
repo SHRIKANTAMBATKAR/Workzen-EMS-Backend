@@ -26,15 +26,53 @@ public class Student {
     private String course;
 
     private String status;
-    
-    private Integer BatchId;
-    
+        
     private LocalDate enrolmentDate;
     
     private String performance;
     
 
-    @ManyToOne
+    public Long getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public String getCourse() {
+		return course;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public LocalDate getEnrolmentDate() {
+		return enrolmentDate;
+	}
+
+	public String getPerformance() {
+		return performance;
+	}
+
+	public Counselor getCounselor() {
+		return counselor;
+	}
+
+	public Batch getBatch() {
+		return batch;
+	}
+
+	@ManyToOne
     @JoinColumn(name = "counselor_id")
     private Counselor counselor;
 
