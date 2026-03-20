@@ -64,6 +64,11 @@ public class AdminController {
         return "Analyst deleted successfully";
     }
 
+    @PutMapping("/analysts/{id}")
+    public Analyst updateAnalyst(@PathVariable Long id, @RequestBody Analyst analyst) {
+        return analystService.updateAnalyst(id, analyst);
+    }
+
     // Add Counselor
     @PostMapping("/counselors")
     public Counselor addCounselor(@RequestBody Counselor counselor) {
@@ -82,6 +87,11 @@ public class AdminController {
         counselorService.deleteCounselor(id);
         return "Counselor deleted successfully";
     }
+
+    @PutMapping("/counselors/{id}")
+    public Counselor updateCounselor(@PathVariable Long id, @RequestBody Counselor counselor) {
+        return counselorService.updateCounselor(id, counselor);
+    }
     
  // Add Counselor
     @PostMapping("/trainers")
@@ -95,11 +105,16 @@ public class AdminController {
         return trainerService.getAllTrainer();
     }
 
-    // Delete Counselor
+    // Delete Trainer
     @DeleteMapping("/trainers/{id}")
     public String deleteTrainer(@PathVariable Long id) {
-        counselorService.deleteCounselor(id);
-        return "Counselor deleted successfully";
+        trainerService.deleteTrainer(id);
+        return "Trainer deleted successfully";
+    }
+
+    @PutMapping("/trainers/{id}")
+    public Trainer updateTrainer(@PathVariable Long id, @RequestBody Trainer trainer) {
+        return trainerService.updateTrainer(id, trainer);
     }
     
 }

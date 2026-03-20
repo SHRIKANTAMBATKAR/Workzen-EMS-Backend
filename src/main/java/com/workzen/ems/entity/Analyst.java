@@ -1,5 +1,6 @@
 package com.workzen.ems.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -147,6 +148,7 @@ public class Analyst {
 	}
 
 
+	@JsonIgnoreProperties("analyst")
 	@OneToMany(mappedBy = "analyst")
     private List<Batch> batches;
 

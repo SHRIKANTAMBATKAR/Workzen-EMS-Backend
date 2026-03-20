@@ -15,7 +15,8 @@ public class BatchDTO {
     private String course;
 
     private String status;
-
+    private String startTime;
+    private String days;
     private Long analystId;
 
     private Long trainerId;

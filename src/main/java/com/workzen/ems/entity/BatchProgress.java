@@ -21,9 +21,18 @@ public class BatchProgress {
 
     private String topicCovered;
 
+    @Column(columnDefinition = "TEXT")
     private String notes;
 
     private Integer completionPercentage;
+    
+    private String fileName;
+    
+    private String fileType;
+    
+    @Lob
+    @Column(columnDefinition = "LONGBLOB")
+    private byte[] fileData;
 
     public Long getId() {
 		return id;
@@ -63,6 +72,30 @@ public class BatchProgress {
 
 	public void setCompletionPercentage(Integer completionPercentage) {
 		this.completionPercentage = completionPercentage;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getFileType() {
+		return fileType;
+	}
+
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
+	}
+
+	public byte[] getFileData() {
+		return fileData;
+	}
+
+	public void setFileData(byte[] fileData) {
+		this.fileData = fileData;
 	}
 
 	public Batch getBatch() {

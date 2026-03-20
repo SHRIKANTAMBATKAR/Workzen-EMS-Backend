@@ -1,5 +1,6 @@
 package com.workzen.ems.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,6 +30,8 @@ public class Batch {
     private Integer capacity;
 
     private String status;
+    private String startTime;
+    private String days;
 
     
     public Long getId() {
@@ -87,6 +90,22 @@ public class Batch {
 		this.status = status;
 	}
 
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getDays() {
+		return days;
+	}
+
+	public void setDays(String days) {
+		this.days = days;
+	}
+
 	public Trainer getTrainer() {
 		return trainer;
 	}
@@ -111,15 +130,18 @@ public class Batch {
 		this.students = students;
 	}
 
+	@JsonIgnoreProperties("batches")
 	@ManyToOne
     @JoinColumn(name = "trainer_id")
     private Trainer trainer;
 
  // Analyst who created the batch
+    @JsonIgnoreProperties("batches")
     @ManyToOne
     @JoinColumn(name = "analyst_id")
     private Analyst analyst;
 
+    @JsonIgnoreProperties("batch")
     @OneToMany(mappedBy = "batch")
     private List<Student> students;
 

@@ -1,5 +1,6 @@
 package com.workzen.ems.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -114,6 +115,7 @@ public class Counselor {
 		this.students = students;
 	}
 
+	@JsonIgnoreProperties("counselor")
 	@OneToMany(mappedBy = "counselor")
     private List<Student> students;
 

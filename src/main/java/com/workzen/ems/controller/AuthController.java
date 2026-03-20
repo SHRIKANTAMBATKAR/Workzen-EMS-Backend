@@ -1,14 +1,22 @@
 package com.workzen.ems.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.workzen.ems.dto.LoginRequestDTO;
+import com.workzen.ems.dto.LoginResponseDTO;
+import com.workzen.ems.service.AuthService;
 
 @RestController
+@RequestMapping("/api/auth")
+@CrossOrigin("*")
 public class AuthController {
 
-    @RequestMapping("/")
-    public String adminDashboard() {
-        return "Welcome to Admin Dashboard";
-    }
+    @Autowired
+    private AuthService authService;
 
+    @PostMapping("/login")
+    public LoginResponseDTO login(@RequestBody LoginRequestDTO request) {
+        return authService.login(request);
+    }
 }
