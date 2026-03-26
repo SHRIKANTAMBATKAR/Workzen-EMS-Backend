@@ -46,7 +46,6 @@ public class CounselorService {
             if (detail.getPassword() != null)       c.setPassword(detail.getPassword());
             if (detail.getAssignedRegion() != null) c.setAssignedRegion(detail.getAssignedRegion());
             if (detail.getExperienceYears() != null) c.setExperienceYears(detail.getExperienceYears());
-            if (detail.getLeadExpertise() != null)  c.setLeadExpertise(detail.getLeadExpertise());
             // Note: Counselor entity has no 'qualification' field — removed that line
             return counselorRepository.save(c);
         }

@@ -17,11 +17,9 @@ public class CounselorDTO {
     private String mobile;
 
     private Boolean active;
-    
-   private String assignedRegion;
-    
+
+    private String assignedRegion;
+
     private Integer experienceYears;
-    
-    private String leadExpertise;
 
 }

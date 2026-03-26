@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.workzen.ems.entity.Analyst;
 import com.workzen.ems.entity.Batch;
+import com.workzen.ems.entity.BatchProgress;
+import com.workzen.ems.entity.Student;
 import com.workzen.ems.entity.Trainer;
 import com.workzen.ems.repository.*;
 
@@ -21,6 +23,12 @@ public class BatchService {
 
     @Autowired
     private TrainerRepository trainerRepository;
+
+    @Autowired
+    private StudentRepository studentRepository;
+
+    @Autowired
+    private BatchProgressRepository batchProgressRepository;
 
     public Batch createBatch(Batch batch, Long analystId, Long trainerId) {
         Analyst analyst = analystRepository.findById(analystId).orElse(null);
@@ -37,6 +45,20 @@ public class BatchService {
     }
 
     public void deleteBatch(Long id) {
+        // 1. Nullify batch reference in students
+        List<Student> students = studentRepository.findByBatchId(id);
+        for (Student student : students) {
+            student.setBatch(null);
+            studentRepository.save(student);
+        }
+
+        // 2. Delete associated progress records
+        List<BatchProgress> progressList = batchProgressRepository.findByBatchId(id);
+        if (progressList != null && !progressList.isEmpty()) {
+            batchProgressRepository.deleteAll(progressList);
+        }
+
+        // 3. Delete the batch
         batchRepository.deleteById(id);
     }
     

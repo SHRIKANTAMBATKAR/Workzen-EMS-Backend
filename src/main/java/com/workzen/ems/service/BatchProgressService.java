@@ -84,6 +84,15 @@ public class BatchProgressService {
             if (progressDetails.getTopicCovered() != null) progress.setTopicCovered(progressDetails.getTopicCovered());
             if (progressDetails.getNotes() != null) progress.setNotes(progressDetails.getNotes());
             if (progressDetails.getCompletionPercentage() != null) progress.setCompletionPercentage(progressDetails.getCompletionPercentage());
+            
+            // Handle batch update
+            if (progressDetails.getBatch() != null && progressDetails.getBatch().getId() != null) {
+                Batch batch = batchRepository.findById(progressDetails.getBatch().getId()).orElse(null);
+                if (batch != null) {
+                    progress.setBatch(batch);
+                }
+            }
+            
             return batchProgressRepository.save(progress);
         }
         return null;

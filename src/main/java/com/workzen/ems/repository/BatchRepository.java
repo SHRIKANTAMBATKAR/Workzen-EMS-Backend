@@ -8,4 +8,5 @@ import java.util.List;
 public interface BatchRepository extends JpaRepository<Batch, Long> {
     List<Batch> findByAnalystId(Long analystId);
     List<Batch> findByTrainerId(Long trainerId);
+    long countByStatus(String status);
 }

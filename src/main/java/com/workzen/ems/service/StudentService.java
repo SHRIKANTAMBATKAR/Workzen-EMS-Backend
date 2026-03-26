@@ -63,6 +63,20 @@ public class StudentService {
         }
         return null;
     }
+
+    public Student assignStudentToBatch(Long id, Long batchId) {
+        Student student = studentRepository.findById(id).orElse(null);
+        if (student != null) {
+            if (batchId != null) {
+                Batch batch = batchRepository.findById(batchId).orElse(null);
+                student.setBatch(batch);
+            } else {
+                student.setBatch(null);
+            }
+            return studentRepository.save(student);
+        }
+        return null;
+    }
     
     public List<Student> getStudentsByCounselorId(Long counselorId) {
         return studentRepository.findByCounselorId(counselorId);

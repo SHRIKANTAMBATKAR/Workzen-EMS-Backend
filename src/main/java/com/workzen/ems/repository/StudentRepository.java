@@ -8,4 +8,5 @@ import java.util.List;
 public interface StudentRepository extends JpaRepository<Student, Long> {
     List<Student> findByCounselorId(Long counselorId);
     List<Student> findByBatchId(Long batchId);
+    long countByBatchIsNull();
 }

@@ -14,28 +14,26 @@ import java.util.List;
 @Table(name = "counselors")
 public class Counselor {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String name;
+	private String name;
 
-    @Column(unique = true)
-    private String email;
+	@Column(unique = true)
+	private String email;
 
-    private String password;
+	private String password;
 
-    private String mobile;
-    
-    private Boolean Active;
+	private String mobile;
 
-    private String assignedRegion;
-    
-    private Integer experienceYears;
-    
-    private String leadExpertise;
+	private Boolean Active;
 
-    public Long getId() {
+	private String assignedRegion;
+
+	private Integer experienceYears;
+
+	public Long getId() {
 		return id;
 	}
 
@@ -99,14 +97,6 @@ public class Counselor {
 		this.experienceYears = experienceYears;
 	}
 
-	public String getLeadExpertise() {
-		return leadExpertise;
-	}
-
-	public void setLeadExpertise(String leadExpertise) {
-		this.leadExpertise = leadExpertise;
-	}
-
 	public List<Student> getStudents() {
 		return students;
 	}
@@ -117,6 +107,6 @@ public class Counselor {
 
 	@JsonIgnoreProperties("counselor")
 	@OneToMany(mappedBy = "counselor")
-    private List<Student> students;
+	private List<Student> students;
 
 }

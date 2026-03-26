@@ -52,4 +52,11 @@ public class StudentController {
     public List<Student> getStudentsByBatchId(@PathVariable Long batchId) {
         return studentService.getStudentsByBatchId(batchId);
     }
+
+    @PatchMapping("/{id}/assign")
+    public Student assignToBatch(
+            @PathVariable Long id, 
+            @RequestParam(required = false) Long batchId) {
+        return studentService.assignStudentToBatch(id, batchId);
+    }
 }
