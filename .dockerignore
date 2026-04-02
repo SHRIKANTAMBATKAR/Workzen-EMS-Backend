@@ -1,0 +1,23 @@
+# Git
+.git
+.gitignore
+
+# Maven build artifacts
+target/
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+.settings/
+.classpath
+.project
+.apt_generated/
+.apt_generated_tests/
+
+# Compile output files (not needed in Docker)
+compile_out*.txt
+
+# OS files
+.DS_Store
+Thumbs.db
