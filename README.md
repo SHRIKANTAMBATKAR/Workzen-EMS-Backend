@@ -10,8 +10,7 @@ WorkZen EMS Backend is a robust REST API built with Spring Boot to manage the IT
 - **Database**: MySQL / PostgreSQL (configured via JPA)
 - **ORM**: Spring Data JPA / Hibernate
 - **Build Tool**: Maven
-- **Utilities**: Lombok
-
+  
 ## 🚀 Key Features
 
 - **JWT Authentication**: Secure login and role-based access control.
