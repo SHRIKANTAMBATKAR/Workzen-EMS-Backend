@@ -31,7 +31,13 @@ public class AnalystService {
     @Autowired
     private TrainerRepository trainerRepository;
 
+    @Autowired
+    private org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
+
     public Analyst addAnalyst(Analyst analyst) {
+        if (analyst.getPassword() != null) {
+            analyst.setPassword(passwordEncoder.encode(analyst.getPassword()));
+        }
         return analystRepository.save(analyst);
     }
 
@@ -55,7 +61,7 @@ public class AnalystService {
             if (detail.getName() != null)             a.setName(detail.getName());
             if (detail.getEmail() != null)            a.setEmail(detail.getEmail());
             if (detail.getMobile() != null)           a.setMobile(detail.getMobile());
-            if (detail.getPassword() != null)         a.setPassword(detail.getPassword());
+            if (detail.getPassword() != null)         a.setPassword(passwordEncoder.encode(detail.getPassword()));
             if (detail.getSpecialization() != null)   a.setSpecialization(detail.getSpecialization());
             if (detail.getExperienceYears() != null)  a.setExperienceYears(detail.getExperienceYears());
             if (detail.getQualification() != null)    a.setQualification(detail.getQualification());
