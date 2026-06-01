@@ -19,7 +19,13 @@ public class CounselorService {
     @Autowired
     private StudentRepository studentRepository;
 
+    @Autowired
+    private org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
+
     public Counselor addCounselor(Counselor counselor) {
+        if (counselor.getPassword() != null) {
+            counselor.setPassword(passwordEncoder.encode(counselor.getPassword()));
+        }
         return counselorRepository.save(counselor);
     }
 
@@ -43,7 +49,7 @@ public class CounselorService {
             if (detail.getName() != null)           c.setName(detail.getName());
             if (detail.getEmail() != null)          c.setEmail(detail.getEmail());
             if (detail.getMobile() != null)         c.setMobile(detail.getMobile());
-            if (detail.getPassword() != null)       c.setPassword(detail.getPassword());
+            if (detail.getPassword() != null)       c.setPassword(passwordEncoder.encode(detail.getPassword()));
             if (detail.getAssignedRegion() != null) c.setAssignedRegion(detail.getAssignedRegion());
             if (detail.getExperienceYears() != null) c.setExperienceYears(detail.getExperienceYears());
             // Note: Counselor entity has no 'qualification' field — removed that line
