@@ -3,7 +3,6 @@
 WorkZen EMS Backend is a robust REST API built with Spring Boot to manage the IT Training Management System. It handles authentication, user management, student registration, batch scheduling, and progress tracking.
 
 ## 🛠️ Tech Stack
-
 - **Framework**: [Spring Boot 3.5.11](https://spring.io/projects/spring-boot)
 - **Language**: Java 17
 - **Security**: Spring Security + JWT (JSON Web Token)
