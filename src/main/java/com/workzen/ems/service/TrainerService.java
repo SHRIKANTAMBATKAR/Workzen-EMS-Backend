@@ -24,7 +24,13 @@ public class TrainerService {
     @Autowired
     private BatchProgressRepository batchProgressRepository;
 
+    @Autowired
+    private org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
+
     public Trainer addTrainer(Trainer trainer) {
+        if (trainer.getPassword() != null) {
+            trainer.setPassword(passwordEncoder.encode(trainer.getPassword()));
+        }
         return trainerRepository.save(trainer);
     }
 
@@ -56,7 +62,7 @@ public class TrainerService {
             if (detail.getName() != null) t.setName(detail.getName());
             if (detail.getEmail() != null) t.setEmail(detail.getEmail());
             if (detail.getMobile() != null) t.setMobile(detail.getMobile());
-            if (detail.getPassword() != null) t.setPassword(detail.getPassword());
+            if (detail.getPassword() != null) t.setPassword(passwordEncoder.encode(detail.getPassword()));
             if (detail.getJoiningDate() != null) t.setJoiningDate(detail.getJoiningDate());
             if (detail.getPrimarySkill() != null) t.setPrimarySkill(detail.getPrimarySkill());
             if (detail.getExperienceYears() != null) t.setExperienceYears(detail.getExperienceYears());
